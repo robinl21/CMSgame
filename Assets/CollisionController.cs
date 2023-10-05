@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CollisionController : MonoBehaviour
 {
+    public Canvas gameOverScreen;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +20,14 @@ public class CollisionController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision){
         Debug.Log(collision.gameObject.name);
         if (collision.gameObject.CompareTag("Death")) {
-            Debug.Log("Death");
+            gameOverScreen.gameObject.SetActive(true);
         }
 
         if (collision.gameObject.CompareTag("Wall")) {
             Debug.Log("Hit Wall");
         }
+
+
     }
 
 
