@@ -21,12 +21,22 @@ public class RandomPrefabSpawner : MonoBehaviour
         timer += Time.deltaTime;
 
         // Check if the timer has reached the desired interval
+<<<<<<< HEAD
         if (timer > 1.0f)
         {
+=======
+        if (timer > 0.75f)
+        {
+	    if (Random.value < spawnFrequency){
+>>>>>>> 679e1023226cc7f5d281610869eb3e78aaa612e4
             Spawn(Random.Range(0, prefabs.Length));
             
             // Reset the timer after spawning
             timer = 0.0f;
+<<<<<<< HEAD
+=======
+}
+>>>>>>> 679e1023226cc7f5d281610869eb3e78aaa612e4
         }
     }
 
