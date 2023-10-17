@@ -25,7 +25,7 @@ public class ItemSpawner: MonoBehaviour
             if (Random.value < speedUpFreq) {
                 Spawn(0);
             }
-            if (Random.value < 1) {
+            if (Random.value < speedUpFreq) {
                 Spawn(1);
             }
             timer = 0.0f;
