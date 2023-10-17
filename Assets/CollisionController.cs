@@ -5,6 +5,7 @@ using UnityEngine;
 public class CollisionController : MonoBehaviour
 {
     public Canvas gameOverScreen;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,7 @@ public class CollisionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Debug.Log(gameObject.GetComponent<PlayerScript>().speed.x);
         
     }
 
@@ -27,7 +29,23 @@ public class CollisionController : MonoBehaviour
             Debug.Log("Hit Wall");
         }
 
-
+        if (collision.gameObject.CompareTag("SpeedUpItem")) {
+            Debug.Log("Hit Item");
+            Debug.Log(gameObject.name);
+            Destroy(collision.gameObject);
+            if (gameObject.name == "Player 1") {
+                gameObject.GetComponent<PlayerScript>().HandleBoost();
+            }
+            else if (gameObject.name == "Player 2") {
+                gameObject.GetComponent<PlayerScript2>().HandleBoost();
+            }
+            else {
+                Debug.Log("Unrecognizable Object");
+                Debug.Log(gameObject.name);
+            }
+            
+            
+        }
     }
 
 
