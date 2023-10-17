@@ -17,6 +17,6 @@ public class VerticalBoundaryMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // this.GetComponent<Rigidbody2D>().velocity = this.cam_script.camVelocity;
+        this.GetComponent<Rigidbody2D>().velocity = this.move_script.camVelocity;
     }
 }
