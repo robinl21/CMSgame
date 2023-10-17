@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemSpawner: MonoBehaviour
 {
-    public float speedUpFreq = 0.1f;
+    public float speedUpFreq = 0.3f;
     public GameObject speedUpPrefab;
     public GameObject slowDownPrefab;
     public GameObject rightWall;
