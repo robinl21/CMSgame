@@ -11,12 +11,13 @@ public class PlayerScript2 : MonoBehaviour
   /// 1 - The speed of the ship
   /// </summary>
   public Vector2 speed = new Vector2(12, 8);
+  public GameObject otherPlayer;
  
   // 2 - Store the movement
   private Vector2 movement;
   public float baseSpeed = 12;
 
-  private float speedMultiplier = 2.5f;
+  private float speedMultiplier = 1.5f;
   private float boostTimer = -100.0f;
   private float boostLength = 3.0f;
   private float slowTimer = -100.0f;
@@ -45,8 +46,8 @@ public class PlayerScript2 : MonoBehaviour
       slowTimer -= Time.deltaTime;
       if (slowTimer <= 0.0f) {
           slowTimer = -100.0f;
-          speed.x *= speedMultiplier;
-          speed.y *= speedMultiplier;
+          otherPlayer.GetComponent<PlayerScript>().speed.x *= speedMultiplier;
+          otherPlayer.GetComponent<PlayerScript>().speed.y *= speedMultiplier;
       }
     }
   }
@@ -76,8 +77,8 @@ public class PlayerScript2 : MonoBehaviour
       slowTimer = slowLength;
     }
     else {
-      speed.x /= speedMultiplier;
-      speed.y /= speedMultiplier;
+      otherPlayer.GetComponent<PlayerScript>().speed.x /= speedMultiplier;
+      otherPlayer.GetComponent<PlayerScript>().speed.y /= speedMultiplier;
       slowTimer = slowLength;
     }
   }
