@@ -21,6 +21,8 @@ public class PlayerScript : MonoBehaviour
   private float speedMultiplier = 2.5f;
   private float boostTimer = -100.0f;
   private float boostLength = 3.0f;
+  private float slowTimer = -100.0f;
+  private float slowLength = 3.0f;
 
  
   void Update()
@@ -39,8 +41,16 @@ public class PlayerScript : MonoBehaviour
       boostTimer -= Time.deltaTime;
       if (boostTimer <= 0.0f) {
           boostTimer = -100.0f;
-          speed.x = baseSpeed;
-          speed.y = baseSpeed / 1.5f;
+          speed.x /= speedMultiplier;
+          speed.y /= speedMultiplier;
+      }
+    }
+    if (slowTimer > -100.0f) {
+      slowTimer -= Time.deltaTime;
+      if (slowTimer <= 0.0f) {
+          slowTimer = -100.0f;
+          speed.x *= speedMultiplier;
+          speed.y *= speedMultiplier;
       }
     }
   }
@@ -61,6 +71,18 @@ public class PlayerScript : MonoBehaviour
       speed.y *= speedMultiplier;
       Debug.Log(speed.x);
       boostTimer = boostLength;
+    }
+  }
+
+  public void HandleSlow()
+  {
+    if (slowTimer > -100.0f) {
+      slowTimer = slowLength;
+    }
+    else {
+      speed.x /= speedMultiplier;
+      speed.y /= speedMultiplier;
+      slowTimer = slowLength;
     }
   }
 }
