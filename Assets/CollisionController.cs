@@ -30,8 +30,6 @@ public class CollisionController : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("SpeedUpItem")) {
-            Debug.Log("Hit Item");
-            Debug.Log(gameObject.name);
             Destroy(collision.gameObject);
             if (gameObject.name == "Player 1") {
                 gameObject.GetComponent<PlayerScript>().HandleBoost();
@@ -42,9 +40,20 @@ public class CollisionController : MonoBehaviour
             else {
                 Debug.Log("Unrecognizable Object");
                 Debug.Log(gameObject.name);
+            }   
+        }
+        else if (collision.gameObject.CompareTag("SlowDownItem")) {
+            Destroy(collision.gameObject);
+            if (gameObject.name == "Player 1") {
+                gameObject.GetComponent<PlayerScript>().HandleSlow();
             }
-            
-            
+            else if (gameObject.name == "Player 2") {
+                gameObject.GetComponent<PlayerScript2>().HandleSlow();
+            }
+            else {
+                Debug.Log("Unrecognizable Object");
+                Debug.Log(gameObject.name);
+            }   
         }
     }
 
