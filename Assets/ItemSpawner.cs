@@ -11,6 +11,7 @@ public class ItemSpawner: MonoBehaviour
     public GameObject slowDownPrefab;
     public GameObject bananaPrefab;
     public GameObject rightWall;
+    public GameObject leftWall;
     public GameObject bottomWall;
     public GameObject upperWall;
     private float timer = 0.0f;
@@ -41,6 +42,11 @@ public class ItemSpawner: MonoBehaviour
         bottomy = bottomWall.transform.position.y;
         uppery = upperWall.transform.position.y;
         float xcor = rightWall.transform.position.x;
+        if (itemType != 2) {
+            if (Random.value > 0.5) {
+                xcor = (rightWall.transform.position.x + leftWall.transform.position.x) / 2;
+            }
+        }
         float ycor = Random.Range(bottomy, uppery);
         if (itemType == 0) {
             Instantiate(speedUpPrefab, new Vector3(xcor, ycor, 0), Quaternion.identity);
