@@ -9,4 +9,6 @@ public class StartGame : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
         Debug.Log("The button is working.");
     }
+
+    
 }

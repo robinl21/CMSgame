@@ -10,7 +10,7 @@ public class PlayerScript2 : MonoBehaviour
   /// <summary>
   /// 1 - The speed of the ship
   /// </summary>
-  public Vector2 speed = new Vector2(12, 8);
+  public Vector2 speed;
   public GameObject otherPlayer;
  
   // 2 - Store the movement
@@ -23,6 +23,10 @@ public class PlayerScript2 : MonoBehaviour
   private float slowTimer = -100.0f;
   private float slowLength = 3.0f;
  
+
+  void Start() {
+    this.speed = GlobalSpeedScript.Instance.playerSpeed;
+  }
   void Update()
   {
     // 3 - Retrieve axis information
