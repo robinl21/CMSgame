@@ -7,11 +7,9 @@ public class RestartButton : MonoBehaviour
     public Canvas gameOverScreen;
 
     public void Update() {
-        Debug.Log("BUTTON RUNNING");
     }
     public void ResetTheGame() {
         gameOverScreen.gameObject.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Debug.Log("The button is working.");
     }
 }

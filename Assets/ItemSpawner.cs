@@ -5,8 +5,11 @@ using UnityEngine;
 public class ItemSpawner: MonoBehaviour
 {
     public float speedUpFreq = 0.3f;
+    public float slowDownFreq = 0.2f;
+    public float bananaFreq = 0.35f;
     public GameObject speedUpPrefab;
     public GameObject slowDownPrefab;
+    public GameObject bananaPrefab;
     public GameObject rightWall;
     public GameObject bottomWall;
     public GameObject upperWall;
@@ -25,8 +28,11 @@ public class ItemSpawner: MonoBehaviour
             if (Random.value < speedUpFreq) {
                 Spawn(0);
             }
-            if (Random.value < speedUpFreq) {
+            if (Random.value < slowDownFreq) {
                 Spawn(1);
+            }
+            if (Random.value < bananaFreq) {
+                Spawn(2);
             }
             timer = 0.0f;
         }
@@ -41,6 +47,9 @@ public class ItemSpawner: MonoBehaviour
         }
         else if (itemType == 1) {
             Instantiate(slowDownPrefab, new Vector3(xcor, ycor, 0), Quaternion.identity);
+        }
+        else if (itemType == 2) {
+            Instantiate(bananaPrefab, new Vector3(xcor, ycor, 0), Quaternion.identity);
         }
     }
 

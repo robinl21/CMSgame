@@ -20,17 +20,16 @@ public class CollisionController : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
-        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.CompareTag("Death")) {
             gameOverScreen.gameObject.SetActive(true);
         }
 
         if (collision.gameObject.CompareTag("Wall")) {
-            Debug.Log("Hit Wall");
         }
 
-        if (collision.gameObject.CompareTag("SpeedUpItem")) {
+        if (collision.gameObject.CompareTag("SpeedUpItem") & collision.gameObject.GetComponent<Activate>().active) {
             Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Activate>().deactivate();
             if (gameObject.name == "Player 1") {
                 gameObject.GetComponent<PlayerScript>().HandleBoost();
             }
@@ -42,13 +41,28 @@ public class CollisionController : MonoBehaviour
                 Debug.Log(gameObject.name);
             }   
         }
-        else if (collision.gameObject.CompareTag("SlowDownItem")) {
+        else if (collision.gameObject.CompareTag("SlowDownItem") & collision.gameObject.GetComponent<Activate>().active) {
+            collision.gameObject.GetComponent<Activate>().deactivate();
             Destroy(collision.gameObject);
             if (gameObject.name == "Player 1") {
                 gameObject.GetComponent<PlayerScript>().HandleSlow();
             }
             else if (gameObject.name == "Player 2") {
                 gameObject.GetComponent<PlayerScript2>().HandleSlow();
+            }
+            else {
+                Debug.Log("Unrecognizable Object");
+                Debug.Log(gameObject.name);
+            }  
+        }
+        else if (collision.gameObject.CompareTag("Banana") & collision.gameObject.GetComponent<Activate>().active) {
+            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Activate>().deactivate();
+            if (gameObject.name == "Player 1") {
+                gameObject.GetComponent<PlayerScript>().HandleSlowSelf();
+            }
+            else if (gameObject.name == "Player 2") {
+                gameObject.GetComponent<PlayerScript2>().HandleSlowSelf();
             }
             else {
                 Debug.Log("Unrecognizable Object");
