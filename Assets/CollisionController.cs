@@ -29,11 +29,10 @@ public class CollisionController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("SpeedUpItem") & collision.gameObject.GetComponent<Activate>().active) {
             Destroy(collision.gameObject);
-            collision.gameObject.GetComponent<Activate>().deactivate();
-            if (gameObject.name == "Player 1") {
+            if (gameObject.name == "raccoon") {
                 gameObject.GetComponent<PlayerScript>().HandleBoost();
             }
-            else if (gameObject.name == "Player 2") {
+            else if (gameObject.name == "raccoon2") {
                 gameObject.GetComponent<PlayerScript2>().HandleBoost();
             }
             else {
@@ -44,10 +43,10 @@ public class CollisionController : MonoBehaviour
         else if (collision.gameObject.CompareTag("SlowDownItem") & collision.gameObject.GetComponent<Activate>().active) {
             collision.gameObject.GetComponent<Activate>().deactivate();
             Destroy(collision.gameObject);
-            if (gameObject.name == "Player 1") {
+            if (gameObject.name == "raccoon") {
                 gameObject.GetComponent<PlayerScript>().HandleSlow();
             }
-            else if (gameObject.name == "Player 2") {
+            else if (gameObject.name == "raccoon2") {
                 gameObject.GetComponent<PlayerScript2>().HandleSlow();
             }
             else {

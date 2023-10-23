@@ -6,8 +6,6 @@ public class RestartButton : MonoBehaviour
 {   
     public Canvas gameOverScreen;
 
-    public void Update() {
-    }
     public void ResetTheGame() {
         gameOverScreen.gameObject.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

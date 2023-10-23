@@ -11,7 +11,7 @@ public class PlayerScript : MonoBehaviour
   /// 1 - The speed of the ship
   /// </summary>
 
-  public Vector2 speed = new Vector2(12, 8);
+  public Vector2 speed;
   public GameObject otherPlayer;
 
   public float baseSpeed = 12;
@@ -26,9 +26,12 @@ public class PlayerScript : MonoBehaviour
   private float slowSelfTimer = -100.0f;
   private float slowLength = 3.0f;
 
- 
+  void Start() {
+    this.speed = GlobalSpeedScript.Instance.playerSpeed;
+  }
   void Update()
   {
+    //Debug.Log(GlobalSpeedScript.Instance.camVelocity);
     // 3 - Retrieve axis information
     float inputX = Input.GetAxis("Horizontal1");
     float inputY = Input.GetAxis("Vertical1");
