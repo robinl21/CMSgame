@@ -57,10 +57,10 @@ public class CollisionController : MonoBehaviour
         else if (collision.gameObject.CompareTag("Banana") & collision.gameObject.GetComponent<Activate>().active) {
             Destroy(collision.gameObject);
             collision.gameObject.GetComponent<Activate>().deactivate();
-            if (gameObject.name == "Player 1") {
+            if (gameObject.name == "raccoon") {
                 gameObject.GetComponent<PlayerScript>().HandleSlowSelf();
             }
-            else if (gameObject.name == "Player 2") {
+            else if (gameObject.name == "raccoon2") {
                 gameObject.GetComponent<PlayerScript2>().HandleSlowSelf();
             }
             else {
