@@ -42,12 +42,15 @@ public class ItemSpawner: MonoBehaviour
         bottomy = bottomWall.transform.position.y;
         uppery = upperWall.transform.position.y;
         float xcor = rightWall.transform.position.x;
+        Debug.Log("Calling spawn");
         if (itemType != 2) {
             if (Random.value > 0.5) {
                 xcor = (rightWall.transform.position.x + leftWall.transform.position.x) / 2;
             }
         }
         float ycor = Random.Range(bottomy, uppery);
+        Debug.Log(xcor);
+        Debug.Log(ycor);
         if (itemType == 0) {
             Instantiate(speedUpPrefab, new Vector3(xcor, ycor, 0), Quaternion.identity);
         }
@@ -55,6 +58,7 @@ public class ItemSpawner: MonoBehaviour
             Instantiate(slowDownPrefab, new Vector3(xcor, ycor, 0), Quaternion.identity);
         }
         else if (itemType == 2) {
+            Debug.Log("spawning banana");
             Instantiate(bananaPrefab, new Vector3(xcor, ycor, 0), Quaternion.identity);
         }
     }

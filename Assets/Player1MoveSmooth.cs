@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
   /// 1 - The speed of the ship
   /// </summary>
 
+  public static PlayerScript Player1;
   public Vector2 speed;
   public GameObject otherPlayer;
 
@@ -25,6 +26,10 @@ public class PlayerScript : MonoBehaviour
   private float slowTimer = -100.0f;
   private float slowSelfTimer = -100.0f;
   private float slowLength = 3.0f;
+
+  private void Awake() {
+    Player1 = this;
+  }
 
   void Start() {
     this.speed = GlobalSpeedScript.Instance.playerSpeed;
@@ -54,8 +59,8 @@ public class PlayerScript : MonoBehaviour
       slowTimer -= Time.deltaTime;
       if (slowTimer <= 0.0f) {
           slowTimer = -100.0f;
-          otherPlayer.GetComponent<PlayerScript2>().speed.x *= speedMultiplier;
-          otherPlayer.GetComponent<PlayerScript2>().speed.y *= speedMultiplier;
+          PlayerScript2.Player2.speed.x *= speedMultiplier;
+          PlayerScript2.Player2.speed.y *= speedMultiplier;
       }
     }
     if (slowSelfTimer > -100.0f) {
@@ -92,8 +97,8 @@ public class PlayerScript : MonoBehaviour
       slowTimer = slowLength;
     }
     else {
-      otherPlayer.GetComponent<PlayerScript2>().speed.x /= speedMultiplier;
-      otherPlayer.GetComponent<PlayerScript2>().speed.y /= speedMultiplier;
+      PlayerScript2.Player2.speed.x /= speedMultiplier;
+      PlayerScript2.Player2.speed.y /= speedMultiplier;
       slowTimer = slowLength;
     }
   }

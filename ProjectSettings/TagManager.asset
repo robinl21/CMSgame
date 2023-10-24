@@ -9,6 +9,7 @@ TagManager:
   - spawn
   - SpeedUpItem
   - SlowDownItem
+  - Banana
   layers:
   - Default
   - TransparentFX

@@ -11,12 +11,25 @@ public class GlobalSpeedScript : MonoBehaviour
 
     public Vector2 playerSpeed = Vector2.right;
 
+    private float accelFactor = 1.005f;
+    private float accelTimer = 0;
+
+
     private void Awake(){
         Instance = this;
 
     }
 
-    // public void Update() {
+    public void Update() {
+        accelTimer += Time.deltaTime;
+        if (accelTimer >= 0.5f) {
+            accelTimer = 0;
+            this.camVelocity *= accelFactor;
+            // PlayerScript.Player1.speed.x *= accelFactor;
+            // PlayerScript2.Player2.speed.x *= accelFactor;
 
-    // }
+            // PlayerScript.Player1.speed.y *= accelFactor;
+            // PlayerScript2.Player2.speed.y *= accelFactor;
+        }
+    }
 }

@@ -10,6 +10,8 @@ public class PlayerScript2 : MonoBehaviour
   /// <summary>
   /// 1 - The speed of the ship
   /// </summary>
+
+  public static PlayerScript2 Player2;
   public Vector2 speed;
   public GameObject otherPlayer;
  
@@ -28,6 +30,8 @@ public class PlayerScript2 : MonoBehaviour
   void Start() {
     this.speed = GlobalSpeedScript.Instance.playerSpeed;
   }
+
+
   void Update()
   {
     // 3 - Retrieve axis information
@@ -51,8 +55,8 @@ public class PlayerScript2 : MonoBehaviour
       slowTimer -= Time.deltaTime;
       if (slowTimer <= 0.0f) {
           slowTimer = -100.0f;
-          otherPlayer.GetComponent<PlayerScript>().speed.x *= speedMultiplier;
-          otherPlayer.GetComponent<PlayerScript>().speed.y *= speedMultiplier;
+          PlayerScript.Player1.speed.x *= speedMultiplier;
+          PlayerScript.Player1.speed.y *= speedMultiplier;
       }
     }
     if (slowSelfTimer > -100.0f) {
@@ -90,8 +94,8 @@ public class PlayerScript2 : MonoBehaviour
       slowTimer = slowLength;
     }
     else {
-      otherPlayer.GetComponent<PlayerScript>().speed.x /= speedMultiplier;
-      otherPlayer.GetComponent<PlayerScript>().speed.y /= speedMultiplier;
+      PlayerScript.Player1.speed.x /= speedMultiplier;
+      PlayerScript.Player1.speed.y /= speedMultiplier;
       slowTimer = slowLength;
     }
   }

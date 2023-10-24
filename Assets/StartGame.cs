@@ -6,7 +6,7 @@ public class StartGame : MonoBehaviour
 {
     public void StartTheGame() {
         Debug.Log("Button working");
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("jerryScene");
         Debug.Log("The button is working.");
     }
 
